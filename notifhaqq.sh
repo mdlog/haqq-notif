@@ -18,11 +18,58 @@ fi
 echo "source $HOME/.bashrc" >> "$HOME"/.bash_profile
 . "$HOME"/.bash_profile
 
-echo -e "Your ID Chat: \e[1m\e[32m${ID_CHAT}\e[0m"
-echo -e "Your Validator Address: \e[1m\e[32m${VALIDATOR_ADDRESS}\e[0m"
-echo '================================================='
 sleep 1
 
 clear
-cd "$HOME" || return
-wget -O nodechecker.sh https://raw.githubusercontent.com/abeachmad/abebot/main/nodechecker.sh && chmod +x nodechecker.sh && screen -xR -S abebot ./nodechecker.sh
+
+VALIDATOR="$VALIDATOR_ADDRESS"
+ID="485873863"
+TOKEN_BOT="5509813677:AAHUX7kAMuW0aF1Zx3NDq5ZxzUx6yJWXHZM"
+while true
+do
+cd "$HOME"/ || return
+jail=$(haqqd q staking validator "$VALIDATOR" -ot | jq .jailed)
+if  [ "$jail" == "false" ]; then
+curl \
+ — data parse_mode=HTML \
+ — data chat_id=$ID_CHAT \
+ — data text="✅ $VALIDATOR IS FINE" \
+ — request 
+ POST https://api.telegram.org/bot$TOKEN_BOT/sendMessage
+
+elif [ "$jail" == "true" ]; then
+curl \
+ — data parse_mode=HTML \
+ — data chat_id=$ID_CHAT \
+ — data text="❌ $VALIDATOR IS JAILED" \
+ — request 
+ POST https://api.telegram.org/bot$TOKEN_BOT/sendMessage
+fi
+block=$(haqqd q slashing signing-info $(haqqd tendermint show-validator) -oj | jq .missed_blocks_counter | grep -o -E '[0-9]+')
+if  [[ "$block" -eq 0 ]]; then
+curl \
+ — data parse_mode=HTML \
+ — data chat_id=$ID_CHAT \
+ — data text="✅ NODE MISSED NO BLOCK" \
+ — request 
+ POST https://api.telegram.org/bot$TOKEN_BOT/sendMessage
+
+elif [[ "$block" -gt 0 ]]; then
+curl \
+ — data parse_mode=HTML \
+ — data chat_id=$ID_CHAT \
+ — data text="⚠️ NODE IS MISSING BLOCKS: $block missed blocks" \
+ — request 
+ POST https://api.telegram.org/bot$TOKEN_BOT/sendMessage
+fi
+   printf "sleep"
+        for((sec=0; sec<300; sec++))
+        do
+                printf "."
+                sleep 1
+        done
+        printf "\n"
+        
+        echo "Press Ctrl+A+D to detach from this screen..."
+        echo "or type: exit "
+done
