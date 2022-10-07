@@ -24,7 +24,7 @@ Before proceeding to this second step, make sure you have ```chat_id```` (in the
 wget -O notifhaqq.sh https://raw.githubusercontent.com/mdlog/haqq-notif/main/notifhaqq.sh && chmod +x notifhaqq.sh && ./notifhaqq.sh
 ```
 
-After that you will be asked to enter your ```chat_id``` and ```Wallet Address``` please enter and press ```Enter``` to continue.
+After that you will be asked to enter your ```chat_id``` and ```Valoper Address``` please enter and press ```Enter``` to continue.
 
 
 # Please watch the following video to find out more complete step by step
