@@ -30,7 +30,7 @@ sleep 1
 
 sudo apt update && sudo apt install screen -y
 
-VALIDATOR="VALOPER_ADDRESS"
+VALIDATOR="$VALOPER_ADDRESS"
 CHAT_ID="$ID_CHAT"
 TOKEN_BOT="5509813677:AAHUX7kAMuW0aF1Zx3NDq5ZxzUx6yJWXHZM"
 URL="https://api.telegram.org/bot$TOKEN_BOT/sendMessage"
