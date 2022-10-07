@@ -34,16 +34,16 @@ curl \
  — data parse_mode=HTML \
  — data chat_id=$ID_CHAT \
  — data text="✅ $VALIDATOR IS FINE" \
- — request 
- POST https://api.telegram.org/bot$TOKEN_BOT/sendMessage
+ — request POST 
+ https://api.telegram.org/bot$TOKEN_BOT/sendMessage
 
 elif [ "$jail" == "true" ]; then
 curl \
  — data parse_mode=HTML \
  — data chat_id=$ID_CHAT \
  — data text="❌ $VALIDATOR IS JAILED" \
- — request 
- POST https://api.telegram.org/bot$TOKEN_BOT/sendMessage
+ — request POST
+ https://api.telegram.org/bot$TOKEN_BOT/sendMessage
 fi
 block=$(haqqd q slashing signing-info $(haqqd tendermint show-validator) -oj | jq .missed_blocks_counter | grep -o -E '[0-9]+')
 if  [[ "$block" -eq 0 ]]; then
@@ -51,16 +51,16 @@ curl \
  — data parse_mode=HTML \
  — data chat_id=$ID_CHAT \
  — data text="✅ NODE MISSED NO BLOCK" \
- — request 
- POST https://api.telegram.org/bot$TOKEN_BOT/sendMessage
+ — request POST 
+ https://api.telegram.org/bot$TOKEN_BOT/sendMessage
 
 elif [[ "$block" -gt 0 ]]; then
 curl \
  — data parse_mode=HTML \
  — data chat_id=$ID_CHAT \
  — data text="⚠️ NODE IS MISSING BLOCKS: $block missed blocks" \
- — request 
- POST https://api.telegram.org/bot$TOKEN_BOT/sendMessage
+ — request POST 
+ https://api.telegram.org/bot$TOKEN_BOT/sendMessage
 fi
    printf "sleep"
         for((sec=0; sec<300; sec++))
