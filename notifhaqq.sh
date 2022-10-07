@@ -11,14 +11,14 @@ cd "$HOME"/ || return
 jail=$(haqqd q staking validator "$VALIDATOR" -ot | jq .jailed)
 if  [ "$jail" == "false" ]; then
 curl -s -X POST \
- --parse_mode=HTML \
+ --parse_mode=html \
  --chat_id=$ID_CHAT \
  --text="✅ $VALIDATOR IS FINE" \
  --request https://api.telegram.org/bot$TOKEN_BOT/sendMessage
 
 elif [ "$jail" == "true" ]; then
 curl -s -X POST \
- --parse_mode=HTML \
+ --parse_mode=html \
  --chat_id=$ID_CHAT \
  --text="❌ $VALIDATOR IS JAILED" \
  --request https://api.telegram.org/bot$TOKEN_BOT/sendMessage
@@ -26,14 +26,14 @@ fi
 block=$(haqqd q slashing signing-info $(haqqd tendermint show-validator) -oj | jq .missed_blocks_counter | grep -o -E '[0-9]+')
 if  [[ "$block" -eq 0 ]]; then
 curl -s -X POST \
- --parse_mode=HTML \
+ --parse_mode=html \
  --chat_id=$ID_CHAT \
  --text="✅ NODE MISSED NO BLOCK" \
  --request https://api.telegram.org/bot$TOKEN_BOT/sendMessage
 
 elif [[ "$block" -gt 0 ]]; then
 curl -s -X POST \
- --parse_mode=HTML \
+ --parse_mode=html \
  --chat_id=$ID_CHAT \
  --text="⚠️ NODE IS MISSING BLOCKS: $block missed blocks" \
  --request https://api.telegram.org/bot$TOKEN_BOT/sendMessage
