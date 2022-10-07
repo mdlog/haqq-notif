@@ -1,40 +1,28 @@
 #!/bin/bash
+sudo apt update && sudo apt install screen -y
+clear
 
-ADDRESS="$WALLET_ADDRESS"
-ID="$ID_CHAT"
-TOKEN_BOT="5509813677:AAHUX7kAMuW0aF1Zx3NDq5ZxzUx6yJWXHZM"
-PASSWORDKU=$PASSWORD
-rm -rf mdnodebot.sh
-while true
-do
-cd $HOME/massa/massa-client
-active_rolls=$(./massa-client wallet_info -p $PASSWORDKU | grep "Active rolls" | awk '{ print $3 }')
-int_rolls=${active_rolls}
+echo "Welcome to Haqq Node Checker!"
+echo "This is a telegram bot to warn you about your node state"
+echo "to continue, please provide your telegram ID Chat and Validator Address"
+echo "Validator Address start with haqqvaloperxxxxxxxxxx"
+sleep 1
 
-# update
-
-final_balance=$(./massa-client wallet_info -p $PASSWORDKU | grep "Final balance" | awk '{ print $3 }')
-int_final_balance=${final_balance}
-candidate_balance=$(./massa-client wallet_info -p $PASSWORDKU | grep "Candidate balance" | awk '{ print $3 }')
-int_candidate_balance=${candidate_balance}
-locked_balance=$(./massa-client wallet_info -p $PASSWORDKU | grep "Locked balance" | awk '{ print $3 }')
-int_locked_balance=${locked_balance}
-final_rolls=$(./massa-client wallet_info -p $PASSWORDKU | grep "Final rolls" | awk '{ print $3 }')
-int_final_rolls=${final_rolls}
-candidate_rolls=$(./massa-client wallet_info -p $PASSWORDKU | grep "Candidate rolls" | awk '{ print $3 }')
-int_candidate_rolls=${candidate_rolls}
-AKTIF=" ✅ NODE: $ADDRESS Aktif "\==" Final balance: $int_final_balance "\==" Candidate balance: $int_candidate_balance "\==" Locked balance: $int_locked_balance "\==" Active rolls: $int_rolls "\==" Final rolls: $int_final_rolls "\==" Candidate rolls: $int_candidate_rolls"
-TIDAK=" ❌ NODE: $ADDRESS Tidak Aktif "\==" Final balance: $int_final_balance "\==" Candidate balance: $int_candidate_balance "\==" Locked balance: $int_locked_balance "\==" Active rolls: $int_rolls "\==" Final rolls: $int_final_rolls "\==" Candidate rolls: $int_candidate_rolls"
-if  [ $int_rolls -gt "0" ]; then
-        curl -s -X POST "https://api.telegram.org/bot$TOKEN_BOT/sendmessage" -d "chat_id=$ID" -d "parse_mode=html" -d "text=$AKTIF"
-elif [ $int_rolls  -lt "1" ]; then
-        curl -s -X POST "https://api.telegram.org/bot$TOKEN_BOT/sendmessage" -d "chat_id=$ID" -d "parse_mode=html" -d "text=$TIDAK"
+# set vars
+if [ ! "$ID_CHAT" ]; then
+read -r -p "Input Your ID_CHAT: " ID_CHAT
+echo 'export ID_CHAT='\"${ID_CHAT}\" >> $HOME/.bash_profile
+read -r -p "Input Your Validator Address: " VALIDATOR_ADDRESS
+echo 'export VALIDATOR_ADDRESS='\"${VALIDATOR_ADDRESS}\" >> $HOME/.bash_profile
 fi
-   printf "sleep"
-        for((sec=0; sec<1800; sec++))
-        do
-                printf "."
-                sleep 1
-        done
-        printf "\n"
-done
+echo "source $HOME/.bashrc" >> "$HOME"/.bash_profile
+. "$HOME"/.bash_profile
+
+echo -e "Your ID Chat: \e[1m\e[32m${ID_CHAT}\e[0m"
+echo -e "Your Validator Address: \e[1m\e[32m${VALIDATOR_ADDRESS}\e[0m"
+echo '================================================='
+sleep 1
+
+clear
+cd "$HOME" || return
+wget -O nodechecker.sh https://raw.githubusercontent.com/abeachmad/abebot/main/nodechecker.sh && chmod +x nodechecker.sh && screen -xR -S abebot ./nodechecker.sh
