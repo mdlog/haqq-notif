@@ -32,5 +32,5 @@ sleep 1
 sudo apt update && sudo apt install screen -y
 
 
-cd "$HOME" || return
+cd $HOME
 wget -O notifhaqq.sh https://raw.githubusercontent.com/mdlog/haqq-notif/main/notifhaqq.sh && chmod +x notifhaqq.sh && screen -xR -S mdlog ./notifhaqq.sh
