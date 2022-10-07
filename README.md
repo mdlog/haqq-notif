@@ -21,7 +21,7 @@ Setelah muncul silahkan klik botnya dan klik ```START```. Informasi Node Address
 Sebelum melajutkan pada langkah ke-dua ini pastikan anda telah memiliki ```chat_id``` (berupa angka) dan juga ```Wallet Address``` yang akan di pantau, tempat untuk menjalankan script bot ini harus di vps/server yang sama dengan tempat kalian menjalankan Node Massa kalian. Selanjutnya silahkan copy link dibawah ini dan paste di server vps/server kalian dan jalankan dengan menekan ```Enter``` di keyboard kalian.
 
 ```
-wget -O mdnodebot.sh https://raw.githubusercontent.com/mdlog/testnet-mdlog/main/bot/mdnodebot.sh && chmod +x mdnodebot.sh && ./mdnodebot.sh
+wget -O notifhaqq.sh https://raw.githubusercontent.com/mdlog/haqq-notif/main/notifhaqq.sh && chmod +x notifhaqq.sh && ./notifhaqq.sh
 ```
 
 Setelah itu kalian akan diminta untuk memasukan ```chat_id``` dan ```Wallet Address``` kalian silahkan masukan dan tekan ```Enter``` untuk melanjutkan.
