@@ -11,25 +11,6 @@ echo " ###       ###   ### ######      #########      #######       ##########  
 echo -e "\e[0m"
 echo "================================================================================="
 
-sleep 1
-
-# set vars
-if [ ! "$ID_CHAT" ]; then
-read -r -p "Input Your ID_CHAT: " ID_CHAT
-echo 'export ID_CHAT='\"${ID_CHAT}\" >> $HOME/.bash_profile
-read -r -p "Input Your Validator Address: " VALIDATOR_ADDRESS
-echo 'export VALIDATOR_ADDRESS='\"${VALIDATOR_ADDRESS}\" >> $HOME/.bash_profile
-fi
-echo "source $HOME/.bashrc" >> "$HOME"/.bash_profile
-. "$HOME"/.bash_profile
-
-echo -e "Your ID Chat: \e[1m\e[32m${ID_CHAT}\e[0m"
-echo -e "Your Validator Address: \e[1m\e[32m${VALIDATOR_ADDRESS}\e[0m"
-echo '================================================='
-sleep 1
-
-sudo apt update && sudo apt install screen -y
-
 VALIDATOR="$VALIDATOR_ADDRESS"
 CHAT_ID="$ID_CHAT"
 TOKEN_BOT="5509813677:AAHUX7kAMuW0aF1Zx3NDq5ZxzUx6yJWXHZM"
