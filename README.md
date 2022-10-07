@@ -29,4 +29,4 @@ After that you will be asked to enter your ```chat_id``` and ```Valoper Address`
 
 # Please watch the following video to find out more complete step by step
 
-https://www.youtube.com/watch?v=2WqyMf7I7Kk&t=313s
+https://www.youtube.com/watch?v=WI9ea1ds64g
