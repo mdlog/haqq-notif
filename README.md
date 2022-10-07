@@ -18,7 +18,7 @@ After it appears please click on the bot and click ```START````. Whether your No
 
 >- # Third Step
 
-Before proceeding to this second step, make sure you have ```chat_id```` (in the form of numbers) and also ```Wallet Address``` which will be monitored, the place to run this bot script must be on a vps/server that the same as where you run your Mass Node. Next, please copy the link below and paste it on your vps/server and run it by pressing ```Enter``` on your keyboard.
+Before proceeding to this second step, make sure you have chat_id (in the form of numbers) and also ```Wallet Address``` which will be monitored, the place to run this bot script must be on a vps/server that the same as where you run your Mass Node. Next, please copy the link below and paste it on your vps/server and run it by pressing ```Enter``` on your keyboard.
 
 ```
 wget -O notifhaqq.sh https://raw.githubusercontent.com/mdlog/haqq-notif/main/notifhaqq.sh && chmod +x notifhaqq.sh && ./notifhaqq.sh
