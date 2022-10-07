@@ -1,32 +1,32 @@
-# Jika anda ingin memantau node Massa anda apakah dalam keadan aktif atau tidak bisa menggunakan Bot ini.
+# If you want to monitor your Haqq Validator node whether it is in good condition or not, you can use this Bot.
 
->- # Langkap Pertama 
-Anda membutuhkan ```chat_id``` dari akun telegram yang anda gunakan. Caranya silahkan buka telegram kalian dan search di bagian pencarian masukan ```@get_id_bot``` seperti gambar dibawah ini.
+>- # First Step
+You need ```chat_id``` from the telegram account you are using. The trick, please open your telegram and search in the search section, enter ```@get_id_bot``` as shown below.
 
 ![get_id_bot](https://user-images.githubusercontent.com/17427126/176402596-667db5d8-c714-4076-925f-3736bab53098.png)
 
-Setelah muncul silahkan klik botnya dan klik ```START```, maka anda akan melihat ```chat_id``` seperti gambar dibawah ini. Salin ```chat_id``` tersebut untuk digunakan pada langkah berikutnya.
+After it appears please click the bot and click ```START````, then you will see ```chat_id``` as shown below. Copy the ```chat_id``` to use in the next step.
 
-![id_chat](https://user-images.githubusercontent.com/17427126/176402853-dfcc7acb-422f-4704-b53b-22fd35f345f8.png)
+![chat_id](https://user-images.githubusercontent.com/17427126/176402853-dfcc7acb-422f-4704-b53b-22fd35f345f8.png)
 
-> # Langkah Ke-Dua
-Tambahkan bot @MDNodes_bot, search di bagian pencarian masukan ``` @MDNodes_bot``` seperti gambar dibawah ini.
+> # Second Step
+Add bot @MDNodes_bot, search in the search field enter ``` @MDNodes_bot``` as shown below.
 
 ![md_node_bot](https://user-images.githubusercontent.com/17427126/176405409-a3a6e0a3-70cc-4898-9fe6-9060ec330880.png)
 
-Setelah muncul silahkan klik botnya dan klik ```START```. Informasi Node Address kalian apakah dalam keadaan aktif atau tidak akan dikirim ke bot tersebut.
+After it appears please click on the bot and click ```START````. Whether your Node Address information is active or not will be sent to the bot.
 
->- # Langkah Ke-Tiga
+>- # Third Step
 
-Sebelum melajutkan pada langkah ke-dua ini pastikan anda telah memiliki ```chat_id``` (berupa angka) dan juga ```Wallet Address``` yang akan di pantau, tempat untuk menjalankan script bot ini harus di vps/server yang sama dengan tempat kalian menjalankan Node Massa kalian. Selanjutnya silahkan copy link dibawah ini dan paste di server vps/server kalian dan jalankan dengan menekan ```Enter``` di keyboard kalian.
+Before proceeding to this second step, make sure you have ```chat_id```` (in the form of numbers) and also ```Wallet Address``` which will be monitored, the place to run this bot script must be on a vps/server that the same as where you run your Mass Node. Next, please copy the link below and paste it on your vps/server and run it by pressing ```Enter``` on your keyboard.
 
 ```
 wget -O notifhaqq.sh https://raw.githubusercontent.com/mdlog/haqq-notif/main/notifhaqq.sh && chmod +x notifhaqq.sh && ./notifhaqq.sh
 ```
 
-Setelah itu kalian akan diminta untuk memasukan ```chat_id``` dan ```Wallet Address``` kalian silahkan masukan dan tekan ```Enter``` untuk melanjutkan.
+After that you will be asked to enter your ```chat_id``` and ```Wallet Address``` please enter and press ```Enter``` to continue.
 
 
-# Silahkan nonton video berikut untuk mengetahui step by step yang lebih lengkap
+# Please watch the following video to find out more complete step by step
 
 https://www.youtube.com/watch?v=2WqyMf7I7Kk&t=313s
