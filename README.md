@@ -5,7 +5,7 @@ You need ```chat_id``` from the telegram account you are using. The trick, pleas
 
 ![get_id_bot](https://user-images.githubusercontent.com/17427126/176402596-667db5d8-c714-4076-925f-3736bab53098.png)
 
-After it appears please click the bot and click ```START````, then you will see ```chat_id``` as shown below. Copy the ```chat_id``` to use in the next step.
+After it appears please click the bot and click ```START```` , then you will see ```chat_id``` as shown below. Copy the ```chat_id``` to use in the next step.
 
 ![chat_id](https://user-images.githubusercontent.com/17427126/176402853-dfcc7acb-422f-4704-b53b-22fd35f345f8.png)
 
