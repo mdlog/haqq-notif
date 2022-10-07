@@ -11,24 +11,34 @@ echo " ###       ###   ### ######      #########      #######       ##########  
 echo -e "\e[0m"
 echo "================================================================================="
 
-sleep 1
+#!/bin/bash
 
-# set vars
-if [ ! $ID_CHAT ]; then
-read -p "Input ID_CHAT Kamu: " ID_CHAT
-echo 'export ID_CHAT='\"${ID_CHAT}\" >> $HOME/.bash_profile
-read -p "Input Wallet Address Kamu: " WALLET_ADDRESS
-echo 'export WALLET_ADDRESS='\"${WALLET_ADDRESS}\" >> $HOME/.bash_profile
+VALIDATOR="$VALIDATOR_ADDRESS"
+ID="$ID_CHAT"
+TOKEN_BOT="5745269620:AAEu6smmKpCJyztqV9sXzx2MNBGsVGVzfTs"
+while true
+do
+cd "$HOME"/ || return
+jail=$(haqqd q staking validator "$VALIDATOR" -ot | jq .jailed)
+if  [ "$jail" == "false" ]; then
+        curl -s -X POST "https://api.telegram.org/bot$TOKEN_BOT/sendmessage" -d "chat_id=$ID" -d "parse_mode=html" -d "text= ✅ $VALIDATOR IS FINE"
+elif [ "$jail" == "true" ]; then
+        curl -s -X POST "https://api.telegram.org/bot$TOKEN_BOT/sendmessage" -d "chat_id=$ID" -d "parse_mode=html" -d "text= ❌ $VALIDATOR IS JAILED"
 fi
-echo 'source $HOME/.bashrc' >> $HOME/.bash_profile
-. $HOME/.bash_profile
-
-echo -e "ID Chat Kamu: \e[1m\e[32m${ID_CHAT}\e[0m"
-echo -e "Wallet Address Kamu: \e[1m\e[32m${WALLET_ADDRESS}\e[0m"
-echo '================================================='
-sleep 1
-
-clear
-cd $HOME
-wget -O mdbotedit.sh https://raw.githubusercontent.com/mdlog/testnet-mdlog/main/bot/mdbotedit.sh && chmod +x mdbotedit.sh && screen -xR -S mdbot ./mdbotedit.sh
-# wget -O mdbot.sh https://raw.githubusercontent.com/mdlog/testnet-mdlog/main/bot/mdbot.sh && chmod +x mdbot.sh && nohup ./mdbot.sh
+block=$(haqqd q slashing signing-info $(haqqd tendermint show-validator) -oj | jq .missed_blocks_counter | grep -o -E '[0-9]+')
+if  [[ "$block" -eq 0 ]]; then
+        curl -s -X POST "https://api.telegram.org/bot$TOKEN_BOT/sendmessage" -d "chat_id=$ID" -d "parse_mode=html" -d "text= ✅ NODE MISSED NO BLOCK"
+elif [[ "$block" -gt 0 ]]; then
+        curl -s -X POST "https://api.telegram.org/bot$TOKEN_BOT/sendmessage" -d "chat_id=$ID" -d "parse_mode=html" -d "text= ⚠️ NODE IS MISSING BLOCKS: $block missed blocks"
+fi
+   printf "sleep"
+        for((sec=0; sec<300; sec++))
+        do
+                printf "."
+                sleep 1
+        done
+        printf "\n"
+        
+        echo "Press Ctrl+A+D to detach from this screen..."
+        echo "or type: exit "
+done
