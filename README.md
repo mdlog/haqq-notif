@@ -21,7 +21,7 @@ After it appears please click on the bot and click ```START````. Whether your No
 Before proceeding to this second step, make sure you have ```chat_id``` (in the form of numbers) and also ```Valoper Address``` which will be monitored, the place to run this bot script must be on a vps/server that the same as where you run your Haqq Node. Next, please copy the link below and paste it on your vps/server and run it by pressing ```Enter``` on your keyboard.
 
 ```
-wget -O notifhaqq.sh https://raw.githubusercontent.com/mdlog/haqq-notif/main/notifhaqq.sh && chmod +x notifhaqq.sh && ./notifhaqq.sh
+wget -O haqq.sh https://raw.githubusercontent.com/mdlog/haqq-notif/main/haqq.sh && chmod +x haqq.sh && ./haqq.sh
 ```
 
 After that you will be asked to enter your ```chat_id``` and ```Valoper Address``` please enter and press ```Enter``` to continue.
