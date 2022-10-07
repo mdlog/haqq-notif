@@ -22,7 +22,7 @@ sleep 1
 
 clear
 
-VALIDATOR="$VALIDATOR_ADDRESS"
+VALIDATOR="haqqvaloper1xmc094zr2zhkmcqw4yw6wzrrf0eaak4sgcafcr"
 ID="485873863"
 TOKEN_BOT="5509813677:AAHUX7kAMuW0aF1Zx3NDq5ZxzUx6yJWXHZM"
 while true
